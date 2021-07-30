@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+    <style>
+        body{
+            transform: scale(.95);
+        }
+        .container {
+            max-width: 96% !important;
+        }
+
+        .heading {
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .heading h1 {
+            font-size: 2rem;
+            padding: 10px;
+            text-shadow: -2px 1px 3px #000;
+        }
+
+        .form-group label {
+            margin-top: 1rem;
+            padding-bottom: .2rem;
+        }
+
+        .form-check {
+            display: inline-block;
+        }
+
+        .form-check label {
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+        <div class="row">
+            <div class="col-md-4 col-12 mt-2">
+                <form name="regform" action="abc.php" onsubmit="save(event)">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" class="form-control" name="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" class="form-control" name="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile</label>
+                        <input type="text" id="mobile" class="form-control" name="mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" name="email">
+                    </div>
+                    <div class="col-12 col-12 mt-2 mb-1">
+                        <label>Courses</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="course" type="checkbox" value="Javascript" id="javascript">
+                        <label class="form-check-label" for="javascript">
+                            Javascript
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="course" type="checkbox" value="Bootstrap" id="bootstrap">
+                        <label class="form-check-label" for="bootstrap">
+                            bootstrap
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="course" type="checkbox" value="Reactjs" id="eactjs">
+                        <label class="form-check-label" for="reactjs">
+                            ReactJs
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="course" type="checkbox" value="Nodejs" id="nodejs">
+                        <label class="form-check-label" for="nodejs">
+                            Node Js
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="course" type="checkbox" value="angular" id="angular">
+                        <label class="form-check-label" for="angular">
+                            Angular Js
+                        </label>
+                    </div>
+                    <div class="col-12 mt-2 mb-1">
+                        <label>Join Type:</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="jointype" type="radio" value="Online" id="online">
+                        <label class="form-check-label" for="online">
+                            Online
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="jointype" type="radio" value="Offline" id="offline">
+                        <label class="form-check-label" for="offline">
+                            Offline
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="jointype" type="radio" value="Recording" id="recording">
+                        <label class="form-check-label" for="recording">
+                            Recordings only
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Place</label>
+                        <select class="form-select" aria-label="Default select" name="place" id="place">
+                            <option selected>-- Select Place --</option>
+                            <option value="Madhapur">Madhapur</option>
+                            <option value="KPHB">KPHB</option>
+                            <option value="Uppal">Uppal</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-2 mb-5">
+                        <button class="btn btn-primary float-end mb-5">Save</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8 col-12 mt-2">
+                <table class="table table-striped">
+                    <thead>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Courses</th>
+                        <th>Join Type</th>
+                        <th>Place</th>
+                    </thead>
+                    <tbody id="dd">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</body>
+<script>
+    function save(e) {
+        e.preventDefault();
+        console.dir(document.regform.firstname.value);
+        console.dir(document.regform.lastname.value);
+        console.dir(document.regform.mobile.value);
+        console.dir(document.regform.email.value);
+        for (var i = 0; i <= document.regform.course.length - 1; i++) {
+            if (document.regform.course[i].checked === true) {
+                console.log(document.regform.course[i].value);
+            }
+        }
+        console.dir(document.regform.jointype.value);
+        console.dir(document.regform.place.value);
+
+        var fname = document.getElementById("firstname").value;
+        var lname = document.getElementById("lastname").value;
+        var phone = document.getElementById("mobile").value;
+        var mail = document.getElementById("email").value;
+        var courselist = document.getElementsByName("course");
+        var coursename = '';
+        for (var k = 0; k <= courselist.length - 1; k++) {
+            if (courselist[k].checked === true) {
+                coursename += courselist[k].value + "<br>";
+                
+            }
+        }
+        
+        var join = document.getElementsByName("jointype");
+        for (var j = 0; j <= join.length - 1; j++) {
+            if (join[j].checked) {
+                var jointypevalue = join[j].value;
+            }
+        }
+        var adr = document.getElementById("place").value;
+
+
+        var students = [{
+            fname,
+            lname,
+            phone,
+            mail,
+            coursename,
+            jointypevalue,
+            adr
+        }];
+
+        console.log(students);
+        
+        students.forEach(function(s, i) {
+            var NewTR = document.createElement('tr');
+            for (var m in s) {
+                var NewTD = document.createElement('td');
+                NewTD.innerHTML = s[m];
+                NewTR.appendChild(NewTD);
+                document.getElementById('dd').appendChild(NewTR);
+            }
+
+        })
+
+    }
+</script>
+
+</html>

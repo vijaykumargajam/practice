@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sample3</title>
+	<style type="text/css">
+		#one{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="one">
+	</div>
+	<button onclick="red()">red</button>
+	<button onclick="makeitgreen()">red</button>
+<script type="text/javascript">
+	function red(){
+		document.getElementById("one").style.backgroundColor="red";
+	}
+	function makeitgreen(){
+		var x = document.getElementById("one");
+		x.style.backgroundColor="green";
+	}
+</script>
+</body>
+</html>
